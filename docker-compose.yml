@@ -1,0 +1,62 @@
+# api-sistema-interno
+
+
+# compose syntax version.
+version: "3.3"
+
+# services declaration.
+services:
+  # PostgreSQL
+  postgres:
+    image: postgres:10.7
+    container_name: acs_internal_system
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=acs_internal_system
+      - POSTGRES_PASSWORD=acs_internal_system
+      - POSTGRES_DB=acs_internal_system
+    ports:
+      - "5431:5432"
+    network_mode: bridge
+  # Web Application
+  web:
+    image: ambientum/php:7.2-nginx
+    volumes:
+      - .:/var/www/app
+      - dot-config:/home/ambientum/.config
+      - dot-cache:/home/ambientum/.cache
+      - dot-local:/home/ambientum/.local
+      - dot-composer:/home/ambientum/.composer
+    environment:
+      - FRAMEWORK=laravel
+      - XDEBUG_ENABLED=false
+      - OPCACHE_MODE=normal
+      - PHP_MEMORY_LIMIT=256M
+    ports:
+      - target: 8080
+        published: 8080
+      - target: 8084
+        published: 8084
+    links:
+      - postgres
+    network_mode: bridge
+
+# volumes declaration.
+volumes:
+  # postgres-data
+  postgres-data:
+    driver: local
+  # dot-config
+  dot-config:
+    driver: local
+  # dot-cache
+  dot-cache:
+    driver: local
+  # dot-local
+  dot-local:
+    driver: local
+  # dot-composer
+  dot-composer:
+    driver: local
+
