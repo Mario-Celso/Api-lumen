@@ -390,7 +390,7 @@ Quando existe um problema na validação do JSON a API retorna:
 + tradeName: Fornecedor A (string, required) - Nome fantasia do fornecedor
 + companyName: Fornecedor A LTDA (string) - Razão Social do fornecedor
 + cityId: 9480 (number, required) - Id da cidade do fornecedor. Veja a sessão de localização desta documentação para saber como obter o cityId
-+ logoUrl: http://www.acs.com.br (string) - Url para o logo do fornecedor
++ logoUrl:  (string) - Url para o logo do fornecedor
 + federalTaxId: 12345678889010 (string) - CNPJ do fornecedor
 + stateTaxId: 123456789 (string) - Inscrição Estadual do fornecedor
 + cityTaxId: 234567890 (string) - Inscrição Municipal do fornecedor
@@ -429,7 +429,7 @@ Quando existe um problema na validação do JSON a API retorna:
 + name: Teste da Silva (string, required) - Nome completo (PF) | Nome fantasia (PJ)         
 + birthdate: `1990-12-01` (string) - Data de nascimento
 + nickname: Grande João (string) - Apelido (PF) | Razão Social (PJ)
-+ logoUrl: http://www.acs.com.br (string) - Url para o logo 
++ logoUrl:  (string) - Url para o logo 
 + stateTaxId: 123456789 (string) - Inscrição Estadual
 + cityTaxId: 234567890 (string) - Inscrição Municipal
 
